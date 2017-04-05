@@ -3,9 +3,7 @@ Shella-Client
 
 [![Build Status](https://travis-ci.org/mwellck/shella-client.svg?branch=master)](https://travis-ci.org/mwellck/shella-client)
 
-Client code for Shella, based on Jasper (an open source platform for developing always-on, voice-controlled applications.)
-
-Learn more at [jasperproject.github.io](http://jasperproject.github.io/)
+Client code for Shella, based on Jasper ([jasperproject.github.io](http://jasperproject.github.io/))
 
 ## Support
 
