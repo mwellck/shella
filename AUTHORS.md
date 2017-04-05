@@ -11,8 +11,7 @@ In August 2014, the core development team has been joined by Jan Holthuis.
     Charles Marsh <crmarsh@princeton.edu>
     Shubhro Saha <saha@princeton.edu>
 
-Here is a probably incomplete list of contributors, that helped to improve
-Jasper. Thanks a lot!
+Contributors
 
     Alex Bate <alex@alexbate.co.uk>
     Andy Buckingham <andy@andybee.com>
