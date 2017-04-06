@@ -1,4 +1,4 @@
-Language model created by QuickLM on Wed Apr  5 07:36:32 EDT 2017
+Language model created by QuickLM on Thu Apr  6 07:40:16 EDT 2017
 Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
 
 The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
@@ -7,59 +7,41 @@ The code that was used to produce this language model is available in Open Sourc
 Please visit http://www.speech.cs.cmu.edu/tools/ for more information
 
 The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
-This model based on a corpus of 7 sentences and 12 words
+This model based on a corpus of 3 sentences and 8 words
 
 \data\
-ngram 1=12
-ngram 2=17
-ngram 3=13
+ngram 1=8
+ngram 2=9
+ngram 3=7
 
 \1-grams:
--0.9473 </s> -0.3010
--0.9473 <s> -0.2490
--1.4914 A -0.2490
--1.4914 E -0.2721
--1.4914 H -0.2868
--1.3153 L -0.2645
--1.4914 S -0.2868
--1.7924 SHELA -0.2490
--1.4914 SHELLA -0.2490
--1.7924 SHEYLA -0.2490
--1.7924 SHEYLLA -0.2490
--1.7924 Y -0.2795
+-0.9700 </s> -0.3010
+-0.9700 <s> -0.2518
+-1.4472 A -0.2518
+-1.4472 E -0.2688
+-1.4472 H -0.2852
+-1.1461 L -0.2518
+-1.4472 S -0.2852
+-1.1461 SHELLA -0.2518
 
 \2-grams:
--0.8451 <s> S 0.0000
--1.1461 <s> SHELA 0.0000
--0.8451 <s> SHELLA 0.0000
--1.1461 <s> SHEYLA 0.0000
--1.1461 <s> SHEYLLA 0.0000
+-0.7782 <s> S 0.0000
+-0.4771 <s> SHELLA 0.0000
 -0.3010 A </s> -0.3010
--0.6021 E L -0.2218
--0.6021 E Y 0.0000
+-0.3010 E L -0.1761
 -0.3010 H E 0.0000
--0.4771 L A 0.0000
--0.7782 L L -0.1249
+-0.6021 L A 0.0000
+-0.6021 L L -0.1761
 -0.3010 S H 0.0000
--0.3010 SHELA </s> -0.3010
 -0.3010 SHELLA </s> -0.3010
--0.3010 SHEYLA </s> -0.3010
--0.3010 SHEYLLA </s> -0.3010
--0.3010 Y L -0.1249
 
 \3-grams:
 -0.3010 <s> S H
--0.3010 <s> SHELA </s>
 -0.3010 <s> SHELLA </s>
--0.3010 <s> SHEYLA </s>
--0.3010 <s> SHEYLLA </s>
 -0.3010 E L L
--0.3010 E Y L
--0.6021 H E L
--0.6021 H E Y
+-0.3010 H E L
 -0.3010 L A </s>
 -0.3010 L L A
 -0.3010 S H E
--0.3010 Y L A
 
 \end\
