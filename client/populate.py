@@ -11,6 +11,7 @@ import shellapath
 def run():
     profile = {}
 
+    # intro
     print("Welcome to the profile populator. If, at any step, you'd prefer " +
           "not to enter the requested information, just hit 'Enter' with a " +
           "blank field to continue.")
@@ -133,6 +134,64 @@ def run():
                                  "or keep just Google (N): ")
         if response == 'Y':
             profile['stt_passive_engine'] = "sphinx"
+
+    # Configure modules
+    print("Do you want to configure modules now?")
+    reponse = raw_input('(Y) or (N): ')
+    while not response or (response != 'Y' and response != 'N'):
+            response = raw_input("Please choose Yes (Y) " +
+                                 "or No (N): ")
+            if response == 'Y':
+            # TWITTER
+            print("Do you want to configure Twitter?")
+              reponse = raw_input('(Y) or (N): ')
+              while not response or (response != 'Y' and response != 'N'):
+                      response = raw_input("Please choose Yes (Y) " +
+                                            "or No (N): ")
+                      if response == 'Y':
+                        consumer_key = raw_input("\nPlease enter your Consumer Key: ")
+                        profile["twitter"] = {TW_CONSUMER_KEY: consumer_key}
+                        consumer_secret = raw_input("\nPlease enter your Consumer Secret: ")
+                        profile["twitter"] = {TW_CONSUMER_SECRET: consumer_secret}
+                        access_token = raw_input("\nPlease enter your Access Token: ")
+                        profile["twitter"] = {TW_ACCESS_TOKEN: access_token}
+                        access_token_secret = raw_input("\nPlease enter your Access Token Secret: ")
+                        profile["twitter"] = {TW_ACCESS_TOKEN_SECRET: access_token_secret}
+            # Domoticz
+            print("Do you want to configure a Domoticz server?")
+              reponse = raw_input('(Y) or (N): ')
+              while not response or (response != 'Y' and response != 'N'):
+                      response = raw_input("Please choose Yes (Y) " +
+                                            "or No (N): ")
+                      if response == 'Y':
+                        serverIP = raw_input("\nPlease enter your Server IP Adress: ")
+                        profile["domoticz"] = {server: serverIP}
+                        domo_username = raw_input("\nPlease enter your Username: ")
+                        profile["domoticz"] = {username: domo_username}
+                        domo_password = raw_input("\nPlease enter your Password: ")
+                        profile["domoticz"] = {password: domo_password}
+
+            # Google Calendar
+            print("Do you want to configure a Google Calendar?")
+              reponse = raw_input('(Y) or (N): ')
+              while not response or (response != 'Y' and response != 'N'):
+                      response = raw_input("Please choose Yes (Y) " +
+                                            "or No (N): ")
+                      if response == 'Y':
+                        gclient_id = raw_input("\nPlease enter your Google Client ID: ")
+                        profile["google"] = {client_id: gclient_id}
+                        gclient_secret = raw_input("\nPlease enter your Username: ")
+                        profile["google"] = {client_secret: gclient_secret}
+
+            # Evernote
+            print("Do you want to configure an Evernote account?")
+              reponse = raw_input('(Y) or (N): ')
+              while not response or (response != 'Y' and response != 'N'):
+                      response = raw_input("Please choose Yes (Y) " +
+                                            "or No (N): ")
+                      if response == 'Y':
+                        e_token = raw_input("\nPlease enter your Evernote TOKEN: ")
+                        profile["evernote"] = {TOKEN: e_token}
 
     # write to profile
     print("Writing to profile...")
