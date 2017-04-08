@@ -534,6 +534,116 @@ class AttSTT(AbstractSTTEngine):
     def is_available(cls):
         return diagnose.check_network_connection()
 
+class WatsonSTT(AbstractSTTEngine):
+    """ Watson Speech-To-Text implementation
+    """
+
+    SLUG = "watson"
+
+    def __init__(self, app_username, app_password):
+        self._logger = logging.getLogger(__name__)
+        self._session = None
+        self._cookies  = []
+        self.auth = (app_username, app_password)
+
+
+    @classmethod
+    def get_config(cls):
+        config = {}
+        profile_path = jasperpath.config('profile.yml')
+        if os.path.exists(profile_path):
+            with open(profile_path, 'r') as f:
+                profile = yaml.safe_load(f)
+                if 'watson-stt' in profile:
+                    if 'username' in profile['watson-stt']:
+                        config['app_username'] = profile['watson-stt']['username']
+                    if 'password' in profile['watson-stt']:
+                        config['app_password'] = profile['watson-stt']['password']
+        return config
+
+    @property
+    def session(self):
+        if not self._session:
+
+            r = requests.post('https://stream.watsonplatform.net/speech-to-text/api/v1/sessions',
+                auth = self.auth
+            )
+            self._session = r.json()
+            self._cookies = r.cookies
+
+        return self._session
+
+    def recognise(self, data):
+        r = requests.get(self.session['recognize'],
+                auth=self.auth,
+                cookies = self._cookies)
+
+        print r.json()
+
+        if r.status_code == 404 or r.json()['session']['state'] != "initialized":
+            # Request token invalid, retry once with a new token
+            self._logger.warning('STT session has expired. Generating a ' +
+                                 'new one and retrying...')
+            self._session = None
+
+        #post the file data
+        headers = {"Content-type" : "audio/wav"}
+        r = requests.post(self.session['recognize'], 
+                auth=self.auth, 
+                cookies = self._cookies,
+                headers=headers,
+                data=data)
+
+        print r.json()
+        return r
+
+
+
+    def transcribe(self, fp):
+        data = fp.read()
+            
+
+        r = self.recognise(data)
+
+        try:
+            r.raise_for_status()
+        except requests.exceptions.HTTPError:
+            self._logger.critical('Request failed with response: %r',
+                                  r.text,
+                                  exc_info=True)
+            return []
+        except requests.exceptions.RequestException:
+            self._logger.critical('Request failed.', exc_info=True)
+            return []
+        else:
+            try:
+
+                results = r.json()['results']
+
+                if(len(results) < 1):
+                    return[]
+                else:
+                    results = results[0]['alternatives']
+            except ValueError as e:
+                self._logger.debug('Recognition failed with status: %s',
+                                   e.args[0])
+                return []
+            except KeyError:
+                self._logger.critical('Cannot parse response.',
+                                      exc_info=True)
+                return []
+            else:
+                transcribed = [x['transcript'].upper() for x in sorted(results,
+                                                            key=lambda x: x['confidence'],
+                                                            reverse=True)]
+                self._logger.info('Transcribed: %r', transcribed)
+                return transcribed
+
+
+    @classmethod
+    def is_available(cls):
+        return diagnose.check_network_connection()
+
 
 class WitAiSTT(AbstractSTTEngine):
     """
