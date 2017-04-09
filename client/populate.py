@@ -163,31 +163,27 @@ def run():
     }
 
     response = raw_input("\nPlease choose a TTS Engine (else flite-tts will be set as default)" +
-                          " from the available implementations: %s " % stt_engines.keys())
+                          " from the available implementations: %s " % tts_engines.keys())
     if response == "ivona-tts":
-    access_value = raw_input("\nPlease enter your Access Key: ")
-    access_key = access_value
-    secret_value = raw_input("\nPlease enter your Secret Key: ")
-    secret_key = secret_value
-    p_shella.write('ivona-tts:' + '\n' +
-              '   ''access_key: ' + access_key + '\n' +
-              '   ''secret_key: ' + secret_key + '\n')
-    elif response == "google-tts":
-    lang_value = raw_input("\nPlease enter your language (eg. en or fr): ")
-    lang_key = lang_value
-    p_shella.write('google-tts:' + '\n' +
-              '   ''language: ' + lang_key + '\n')
-    elif (response in tts_engines):
+		access_value = raw_input("\nPlease enter your Access Key: ")
+		access_key = access_value
+		secret_value = raw_input("\nPlease enter your Secret Key: ")
+		secret_key = secret_value
+		p_shella.write('ivona-tts:' + '\n' + '   access_key: ' + access_key + '\n' + '   secret_key: ' + secret_key + '\n')
+    if response == "google-tts":
+		lang_value = raw_input("\nPlease enter your language (eg. en, fr, etc.): ")
+		lang_key = lang_value
+		p_shella.write('google-tts:' + '\n' + '   language: ' + lang_key + '\n')
+    if (response in tts_engines):
           profile["tts_engine"] = response
     if response == "google-tts" or response == "ivona-tts":
-    response = raw_input("\nChoosing this engine means every reply " +
+	response = raw_input("\nChoosing this engine means every reply " +
                              "makes a request online. " +
                              "\nWould you like to use an offline TTS? (Y) or (N)?")
-    while not response or (response != 'Y' and response != 'N'):
-      response = raw_input("Please choose Flite (Y) " +
-                            "or keep your engine (N): ")
-    if response == 'Y':
-      profile['tts_engine'] = "flite-tts"
+	while not response or (response != 'Y' and response != 'N'):
+		response = raw_input("Please choose Flite (Y) or keep your engine (N): ")
+		if response == 'Y':
+			profile['tts_engine'] = "flite-tts"
 
     # Write profile
     print("Writing your profile")
