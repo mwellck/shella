@@ -24,3 +24,15 @@ python-dateutil==2.3
 
 # MPDControl module
 python-mpd==0.3.0
+
+# IMDb Movies
+imdbpy>=5.0
+
+# Google Calendar
+httplib2
+
+# Status
+psutil
+
+# Twitter
+tweepy

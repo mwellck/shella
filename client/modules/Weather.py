@@ -39,7 +39,7 @@ def replaceAcronyms(text):
 
 
 def get_locations():
-    r = requests.get('http://www.wunderground.com/about/faq/' +
+    r = requests.get('https://www.wunderground.com/about/faq/' +
                      'international_cities.asp')
     soup = bs4.BeautifulSoup(r.text)
     data = soup.find(id="inner-content").find('pre').string
@@ -73,7 +73,7 @@ def get_locations():
 
 
 def get_forecast_by_name(location_name):
-    entries = feedparser.parse("http://rss.wunderground.com/auto/rss_full/%s"
+    entries = feedparser.parse("https://rss.wunderground.com/auto/rss_full/%s"
                                % urllib.quote(location_name))['entries']
     if entries:
         # We found weather data the easy way
@@ -86,7 +86,7 @@ def get_forecast_by_name(location_name):
 
 
 def get_forecast_by_wmo_id(wmo_id):
-    return feedparser.parse("http://rss.wunderground.com/auto/" +
+    return feedparser.parse("https://rss.wunderground.com/auto/" +
                             "rss_full/global/stations/%s.xml"
                             % wmo_id)['entries']
 
