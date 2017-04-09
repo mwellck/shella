@@ -154,7 +154,6 @@ def run():
         "espeak-tts": None,
         "festival-tts": None,
         "flite-tts": None,
-        "mimic-tts": None,
         "osx-tts": None,
         "pico-tts": None,
         "google-tts": None,
