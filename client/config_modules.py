@@ -59,7 +59,7 @@ def main():
 		p_shella.write('\n' + 'google:' + '\n' +
 						'   ' + id_name + ': ' + id_key + '\n' +
 						'   ' + secret_name + ': ' + secret_key + '\n')
-		print("Calendar configured" + '/n')
+		print("Calendar configured" + '\n')
 
 	# Twitter
     twitter_keys = {
@@ -96,7 +96,7 @@ def main():
 
     # Finish
     p_shella.close()
-    print("Exiting..")
+    print("Done - exiting..")
 
 if __name__ == "__main__":
     main()
