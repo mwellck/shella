@@ -155,7 +155,7 @@ def run():
         "festival-tts": None,
         "flite-tts": None,
         "mimic-tts": None,
-        "osx-tts" None,
+        "osx-tts": None,
         "pico-tts": None,
         "google-tts": None,
         "mary-tts": None,
