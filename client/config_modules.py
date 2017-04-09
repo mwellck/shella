@@ -39,6 +39,7 @@ def main():
 						'   ' + server_name + ': ' + server_key + '\n' +
 						'   ' + username_name + ': ' + username_key + '\n' +
 						'   ' + password_name + ': ' + password_key + '\n')
+		print("Server configured" + '/n')
 
 	# Google Calendar
     google_keys = {
@@ -52,12 +53,13 @@ def main():
 		id_value = raw_input("\nPlease enter your Google Client ID: ")
 		id_key = id_value
 		id_name = google_keys['id_client']
-		secret_value = raw_input("\nPlease enter your CLIENT key: ")
+		secret_value = raw_input("\nPlease enter your Client Secret: ")
 		secret_key = secret_value
 		secret_name = google_keys['secret_client']
 		p_shella.write('\n' + 'google:' + '\n' +
 						'   ' + id_name + ': ' + id_key + '\n' +
 						'   ' + secret_name + ': ' + secret_key + '\n')
+		print("Calendar configured" + '/n')
 
 	# Twitter
     twitter_keys = {
@@ -90,11 +92,11 @@ def main():
 						'   ' + api_secret_name + ': ' + api_secret_key + '\n' +
 						'   ' + token_name + ': ' + token_key + '\n' +
 						'   ' + token_secret_name + ': ' + token_secret_key + '\n')
+		print("Twitter configured" + '/n')
 
     # Finish
     p_shella.close()
-	#print("Writing to profile...")
-	#print("Done.")
+    print("Exiting..")
 
 if __name__ == "__main__":
     main()
