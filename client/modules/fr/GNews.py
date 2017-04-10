@@ -108,9 +108,9 @@ def handle(text, mic, profile):
             mic.say("Aucunes nouvelles vous sera envoyés.")
 
     if 'phone_number' in profile:
-        mic.say("Voici les dernières nouvelles. " + all_titles +
-                ". Voulez vous que je vous envoie les nouvelles?? " +
-                "Si oui, lesquelles?")
+        mic.say("Voici les dernières nouvelles." + all_titles +
+				"Voulez vous que je vous envoie les nouvelles?" +
+				"Si oui, lesquelles?")
         handleResponse(mic.activeListen())
 
     else:
@@ -125,4 +125,4 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return bool(re.search(r'\b(nouvelle|information|info)\b', text, re.IGNORECASE))
+    return bool(re.search(r'\b(nouvelle|information|info|news)\b', text, re.IGNORECASE))
