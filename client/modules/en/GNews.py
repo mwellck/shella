@@ -47,8 +47,7 @@ def handle(text, mic, profile):
     mic.say("Pulling up the news")
     articles = getTopArticles(maxResults=3)
     titles = [" ".join(x.title.split(" - ")[:-1]) for x in articles]
-    all_titles = "... ".join(str(idx + 1) + ")" +
-                             title for idx, title in enumerate(titles))
+    all_titles = " ".join(str(idx + 1) + ")" + title for idx, title in enumerate(titles))
 
     def handleResponse(text):
 
