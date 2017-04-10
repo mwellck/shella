@@ -33,7 +33,7 @@ class Brain(object):
         """
 
         logger = logging.getLogger(__name__)
-        locations = [shellapath.PLUGIN_PATH]
+        locations = [shellapath.getLang()]
         logger.debug("Looking for modules in: %s",
                      ', '.join(["'%s'" % location for location in locations]))
         modules = []
