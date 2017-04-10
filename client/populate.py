@@ -184,6 +184,19 @@ def run():
 		if response == 'Y':
 			profile['tts_engine'] = "flite-tts"
 
+  # Language
+    language = {
+        "english": "en",
+        "french": "fr"
+    }
+
+    response = raw_input("\nPlease choose a language for Shella (else english will be set as default)" +
+                          " from the available implementations: %s " % language.keys())
+    if (response in language):
+          profile["language"] = language[response]
+    else:
+      p_shella.write('language: en' + '\n')
+
     # Write profile
     print("Writing your profile")
     outputFile = open(shellapath.config("profile.yml"), "w")
