@@ -424,19 +424,19 @@ def handle(text, mic, profile):
         thermostatname = thermostat['Name']
         setpoint = thermostat['SetPoint']
         idx = thermostat['SetPointIdx']
-        if any(word in text for word in ["augmente"]):
+        if any(word in text for word in ["up", "increase"]):
             sp = str(float(setpoint) + 1)
             send_thermostat_command(idx, sp)
-            return "La température a été augmentée à %s." % sp
-        elif any(word in text for word in ["réduit", "baisse"]):
+            return "Increasing the temperature to %s." % sp
+        elif any(word in text for word in ["down", "decrease"]):
             sp = str(float(setpoint) - 1)
             send_thermostat_command(idx, sp)
-            return "La température a été réduite à %s." % sp
-        elif any(word in text for word in ["quel", "es", "température", "humidité"]):
+            return "Decreasing the temperature to %s." % sp
+        elif any(word in text for word in ["what", "is", "temperature", "humidity"]):
             temp, humid = str(round(thermostat['Temp'],1)), str(thermostat['Humidity'])
-            return "A l'intérieur de la maison, la température est de %s degrés et il y a %s pourcent d'humidité." % (temp, humid)
+            return "Inside the house, it is %s degrees celsius and %s percent humidity." % (temp, humid)
         else:
-            return "Je n'ai pas compris la demande pour le thermostat."
+            return "I did not understand your thermostat command."
 
     def handle_thermostats():
         """
