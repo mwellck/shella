@@ -1,5 +1,5 @@
 #Written by Jake Schultz
-#TODO Add more lang support, limit number of results returned
+# -*- coding: utf-8-*-
 import re
 from urllib2 import Request, urlopen, URLError
 import json
