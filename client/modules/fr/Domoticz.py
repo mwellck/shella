@@ -20,9 +20,9 @@ __status__ = "Development"
 DEBUG = False
 
 WORDS = [
-    "LIGHT", "LIGHTS",
-    "THERMOSTAT", "TEMPERATURE", "HUMIDITY", 
-    "SCENE", "GROUP", "ROOM", "MODE"
+    "LUMIERE", "LUMIERES",
+    "THERMOSTAT", "TEMPERATURE", "HUMIDITé", 
+    "SCENE", "GROUPE", "PIECE", "MODE"
 ]
 
 def handle(text, mic, profile):
