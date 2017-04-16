@@ -1,4 +1,3 @@
-#Written by Jake Schultz
 # -*- coding: utf-8-*-
 import re
 from urllib2 import Request, urlopen, URLError
@@ -32,14 +31,5 @@ def get_wiki(text,mic):
 
 
 def isValid(text):
-    wiki= bool(re.search(r'\bWiki\b',text, re.IGNORECASE))
-    # Add 'Wicky' because the STT engine recognizes it quite often
-    wicky= bool(re.search(r'\bwicky\b',text, re.IGNORECASE))
-    article= bool(re.search(r'\barticle\b',text, re.IGNORECASE))
-    wikipedia= bool(re.search(r'\bwikipedia\b',text, re.IGNORECASE))
 
-    if wicky or wiki or article or wikipedia:
-        return True
-    else:
-        return False
-
+    return any(word in text.upper() for word in WORDS)

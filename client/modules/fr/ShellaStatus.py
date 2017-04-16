@@ -4,11 +4,11 @@ import psutil
 import platform
 import datetime
 
-WORDS = ["STATUS", "ETAT"]
+WORDS = ["STATUS", "STATUE", "STATUES", "STATUT"]
 
 def isValid(text):
     
-    return bool(re.search(r'\b(status)\b', text, re.IGNORECASE))
+    return any(word in text.upper() for word in WORDS)
 
 def handle(text, mic, profile):
     os, name, version, _, _, _ = platform.uname()

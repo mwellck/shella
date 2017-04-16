@@ -9,7 +9,7 @@ import bs4
 from client.app_utils import getTimezone
 from semantic.dates import DateService
 
-WORDS = ["METEO", "AUJOURD'HUI", "DEMAIN", "TEMPS"]
+WORDS = ["METEO", "AUJOURD'HUI", "DEMAIN", "TEMPS", "DEHORS", "CHAUD", "FROID", "NUAGE", "PLUIE", "TEMPERATURE"]
 
 
 def replaceAcronyms(text):
@@ -19,10 +19,10 @@ def replaceAcronyms(text):
 
     def parseDirections(text):
         words = {
-            'N': 'north',
-            'S': 'south',
-            'E': 'east',
-            'W': 'west',
+            'N': 'nord',
+            'S': 'sud',
+            'E': 'est',
+            'W': 'ouest',
         }
         output = [words[w] for w in list(text)]
         return ' '.join(output)
@@ -168,5 +168,4 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return bool(re.search(r'\b(météo?|temps?|température|dehors|chaud|' +
-                          r'froid|nuage|pluie)\b', text, re.IGNORECASE))
+    return any(word in text.upper() for word in WORDS)

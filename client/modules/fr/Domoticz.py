@@ -4,18 +4,12 @@
     
     Based on script v1.6.2 by Chopper_Rob:
     https://www.chopperrob.nl/domoticz/5-report-devices-online-status-to-domoticz
+    And Niels Looije
 """
 import re
 import urllib2
 import json
 import base64
-
-__author__ = "Niels Looije"
-__license__ = "MIT"
-__version__ = "1.0.0"
-__maintainer__ = "Niels Looije"
-__email__ = "nlooije@gmail.com"
-__status__ = "Development"
 
 DEBUG = False
 

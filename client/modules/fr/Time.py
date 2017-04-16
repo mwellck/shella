@@ -32,4 +32,4 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return bool(re.search(r'\bheure\b', text, re.IGNORECASE))
+    return any(word in text.upper() for word in WORDS)
