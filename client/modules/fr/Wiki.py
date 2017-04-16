@@ -4,7 +4,7 @@ import re
 from urllib2 import Request, urlopen, URLError
 import json
 
-WORDS = ["WIKI", "WICKY","ARTICLE"]
+WORDS = ["WIKI", "WICKY","ARTICLE", "WIKIPEDIA"]
 
 PRIORITY = 1
 
@@ -36,8 +36,9 @@ def isValid(text):
     # Add 'Wicky' because the STT engine recognizes it quite often
     wicky= bool(re.search(r'\bwicky\b',text, re.IGNORECASE))
     article= bool(re.search(r'\barticle\b',text, re.IGNORECASE))
+    wikipedia= bool(re.search(r'\bwikipedia\b',text, re.IGNORECASE))
 
-    if wicky or wiki or article:
+    if wicky or wiki or article or wikipedia:
         return True
     else:
         return False
