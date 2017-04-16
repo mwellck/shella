@@ -9,7 +9,7 @@ import bs4
 from client.app_utils import getTimezone
 from semantic.dates import DateService
 
-WORDS = ["METEO", "AUJOURD'HUI", "DEMAIN", "TEMPS", "DEHORS", "CHAUD", "FROID", "NUAGE", "PLUIE", "TEMPERATURE"]
+WORDS = ["METEO", "M\xc9T\xc9O", "AUJOURD'HUI", "DEMAIN", "TEMPS", "DEHORS", "CHAUD", "FROID", "NUAGE", "PLUIE", "TEMPERATURE", "TEMP\xc9RATURE"]
 
 
 def replaceAcronyms(text):

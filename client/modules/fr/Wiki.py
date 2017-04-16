@@ -3,7 +3,7 @@ import re
 from urllib2 import Request, urlopen, URLError
 import json
 
-WORDS = ["WIKI", "WICKY","ARTICLE", "WIKIPEDIA"]
+WORDS = ["WIKI", "WICKY", "ARTICLE", "WIKIPEDIA", "WIKIP\xc9DIA"]
 
 PRIORITY = 1
 

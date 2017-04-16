@@ -13,11 +13,7 @@ import base64
 
 DEBUG = False
 
-WORDS = [
-    "LUMIERE", "LUMIERES",
-    "THERMOSTAT", "TEMPERATURE", "HUMIDITé", 
-    "SCENE", "GROUPE", "PIECE", "MODE"
-]
+WORDS = ["LUMIERE", "LUMIERES", "THERMOSTAT", "TEMPERATURE", "HUMIDITé", "SCENE", "GROUPE", "PIECE", "MODE"]
 
 def handle(text, mic, profile):
     """
