@@ -168,5 +168,5 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return bool(re.search(r'\b(weathers?|temperature|forecast|outside|hot|' +
+    return bool(re.search(r'\b(weather?|temperature|forecast|outside|hot|' +
                           r'cold|jacket|coat|rain)\b', text, re.IGNORECASE))

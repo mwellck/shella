@@ -512,7 +512,7 @@ class WitAiSTT(AbstractSTTEngine):
                 if 'stt-keys' in profile:
                     if 'WITAI_KEY' in profile['stt-keys']:
                         config['access_token'] = \
-                            profile['witai-stt']['WITAI_KEY']
+                            profile['stt-keys']['WITAI_KEY']
         return config
 
     @property
