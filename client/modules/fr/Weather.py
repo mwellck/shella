@@ -9,12 +9,7 @@ import bs4
 from client.app_utils import getTimezone
 from semantic.dates import DateService
 
-<<<<<<< HEAD
 WORDS = ["METEO", "M\xc9T\xc9O", "AUJOURD'HUI", "DEMAIN", "TEMPS", "DEHORS", "CHAUD", "FROID", "NUAGE", "PLUIE", "TEMPERATURE", "TEMP\xc9RATURE"]
-=======
-WORDS = ["METEO", "AUJOURD'HUI", "DEMAIN", "TEMPS"]
->>>>>>> parent of c5891c8... Improve French
-
 
 def replaceAcronyms(text):
     """
