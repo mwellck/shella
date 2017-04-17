@@ -125,7 +125,7 @@ def handle(text, mic, profile):
         if 'temp_unit' in profile['OpenWeatherMap']:
             temp_unit = profile['OpenWeatherMap']['temp_unit']
                         
-    owm = pyowm.OWM(api_key)
+    owm = pyowm.OWM(api_key, language='fr')
     
     if re.search(r"\b(ACTUELLEMENT|ACTUEL|ACTUELLE|AUJOURD'HUI|MAINTENANT)\b",text,re.IGNORECASE):
         cw = owm.weather_at_place(city_name+","+country)
