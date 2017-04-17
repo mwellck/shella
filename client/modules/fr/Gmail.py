@@ -111,7 +111,7 @@ def handle(text, mic, profile):
         return
 
     if not senders:
-        mic.say("Vous avez aucun nouveau email.")
+        mic.say("Vous n'avez aucun nouvel email.")
     elif len(senders) == 1:
         mic.say("Vous avez un nouvel email non lu de " + senders[0] + ".")
     else:
