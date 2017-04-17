@@ -95,7 +95,7 @@ def run():
     # OpenWeatherMap
     print("\nLocation configuration")
     owm = raw_input("\nWould you like to add your location now? (Y) or (N): ")
-    while not own or (owm != 'Y' and owm != 'N'):
+    while not owm or (owm != 'Y' and owm != 'N'):
         owm = raw_input("\nPlease choose yes (Y) or no (N): ")
     if owm == "Y":
       print("\nBefore you continue, please sign up on OpenWeatherMap and get your free API key")
