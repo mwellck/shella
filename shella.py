@@ -110,11 +110,17 @@ class Shella(object):
                        stt_engine_class.get_active_instance())
 
     def run(self):
-        if 'first_name' in self.config:
-            salutation = ("How can I be of service, %s?"
-                          % self.config["first_name"])
+        if 'fr' in self.config['language']:
+            if 'first_name' in self.config:
+                salutation = ("Comment puis-je vous aidez, %s?" % self.config["first_name"])
+            else:
+                salutation = "Comment puis-je vous aidez?"
         else:
-            salutation = "How can I be of service?"
+            if 'first_name' in self.config:
+                salutation = ("How can I be of service, %s?" % self.config["first_name"])
+            else:
+                salutation = "How can I be of service?"
+
         self.mic.say(salutation)
 
         conversation = Conversation("SHELLA", self.mic, self.config)

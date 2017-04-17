@@ -4,11 +4,7 @@ from client import app_utils
 import re
 from semantic.numbers import NumberService
 
-<<<<<<< HEAD
 WORDS = ["NEWS", "OUI", "NON", "PREMIER", "DEUXIEME", "DEUXI\xc8ME", "TROISI\xc8ME", "TROISIEME", "INFO", "NOUVELLE", "INFORMATION", "NEWZ", "NOUVEL"]
-=======
-WORDS = ["NEWS", "OUI", "NON", "PREMIER", "DEUXIEME", "TROISIEME", "INFO", "NOUVELLE", "INFORMATION"]
->>>>>>> parent of c5891c8... Improve French
 
 PRIORITY = 3
 
