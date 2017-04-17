@@ -96,8 +96,8 @@ def handle(text, mic, profile):
                 if not app_utils.emailUser(profile,
                                            SUBJECT="Les dernières nouvelles",
                                            BODY=body):
-                    mic.say("J'ai quelques difficultées à vous envoyez les articles." +
-                            "Pourriez vous vérifier que votre numéro de téléphone est correcte?")
+                    mic.say(u"J'ai quelques difficultées à vous envoyez les articles." +
+                            u"Pourriez vous vérifier que votre numéro de téléphone est correcte?")
                     return
 
             mic.say("C'est fait")
@@ -107,14 +107,13 @@ def handle(text, mic, profile):
             mic.say("Aucunes nouvelles vous sera envoyés.")
 
     if 'phone_number' in profile:
-        mic.say("Voici les dernières nouvelles." + all_titles +
-				"Voulez vous que je vous envoie les nouvelles?" +
-				"Si oui, lesquelles?")
+        mic.say(u"Voici les dernières nouvelles." + all_titles +
+				u"Voulez vous que je vous envoie les nouvelles?" +
+				u"Si oui, lesquelles?")
         handleResponse(mic.activeListen())
 
     else:
-        mic.say(
-            "Voici les dernières nouvelles. " + all_titles)
+        mic.say(u"Voici les dernières nouvelles. " + all_titles)
 
 
 def isValid(text):
@@ -124,4 +123,4 @@ def isValid(text):
         Arguments:
         text -- user-input, typically transcribed speech
     """
-    return bool(re.search(r'\b(nouvelle|information|info|news)\b', text, re.IGNORECASE))
+    return bool(re.search(r'\b(nouvelle|information|info|news|newz|infos|nouvelles)\b', text, re.IGNORECASE))

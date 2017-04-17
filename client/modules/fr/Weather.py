@@ -17,10 +17,10 @@ def handle(text, mic, profile):
         return datetime.fromtimestamp(unix_time).strftime("%B %d")
         
     def getWeeklyWeatherReport(forecast,loc,temp_unit='celsius',report='current'):
-        weather_report = "Les prévisions météo de la semaine pour "+loc +". "
+        weather_report = u"Les prévisions météo de la semaine pour "+loc +". "
         rainy_days = len(forecast.when_rain())
         if rainy_days > 0:
-            rainy_days_str = "Les jours de pluie sont. "
+            rainy_days_str = u"Les jours de pluie sont. "
             for d in range(rainy_days):
                 rain_day = forecast.when_rain()[d].get_reference_time()
                 date_str = formatTimeStamp(rain_day)
@@ -31,7 +31,7 @@ def handle(text, mic, profile):
         
         most_rainy = forecast.most_rainy()
         if most_rainy:
-            weather_report += "Vous aurez de forte pluie. "
+            weather_report += u"Vous aurez de forte pluie. "
             ref_time = most_rainy.get_reference_time()
             date_str = formatTimeStamp(ref_time)
             weather_report += date_str + ". "
@@ -39,7 +39,7 @@ def handle(text, mic, profile):
             
         sunny_days = len(forecast.when_sun())
         if sunny_days > 0:
-            sunny_days_str = "Les jours ensoleillés sont. "
+            sunny_days_str = u"Les jours ensoleillés sont. "
             for d in range(sunny_days):
                 sunny_day = forecast.when_rain()[d].get_reference_time()
                 date_str = formatTimeStamp(sunny_day)
@@ -50,7 +50,7 @@ def handle(text, mic, profile):
         
         most_hot = forecast.most_hot()
         if most_hot:
-            weather_report += "Vous aurez le plus chaud. "
+            weather_report += u"Vous aurez le plus chaud. "
             ref_time = most_hot.get_reference_time()
             date_str = formatTimeStamp(ref_time)
             weather_report += date_str + ". "
@@ -58,7 +58,7 @@ def handle(text, mic, profile):
             
         most_windy = forecast.most_windy()
         if most_windy:
-            weather_report += "Le jour avec le plus de vent sera. "
+            weather_report += u"Le jour avec le plus de vent sera. "
             ref_time = most_windy.get_reference_time()
             date_str = formatTimeStamp(ref_time)
             weather_report += date_str + ". "
@@ -66,7 +66,7 @@ def handle(text, mic, profile):
             
         most_humid = forecast.most_humid()
         if most_humid:
-            weather_report += "Le jour le plus humide sera. "
+            weather_report += u"Le jour le plus humide sera. "
             ref_time = most_humid.get_reference_time()
             date_str = formatTimeStamp(ref_time)
             weather_report += date_str + ". "
@@ -74,7 +74,7 @@ def handle(text, mic, profile):
 
         most_cold = forecast.most_cold()
         if most_cold:
-            weather_report += "Le jour le plus agréable sera. "
+            weather_report += u"Le jour le plus agréable sera. "
             ref_time = most_cold.get_reference_time()
             date_str = formatTimeStamp(ref_time)
             weather_report += date_str + ". "
@@ -96,22 +96,22 @@ def handle(text, mic, profile):
             temp_max = serviceNum.parseMagnitude(temp['temp_max'])
             temp_min = serviceNum.parseMagnitude(temp['temp_min'])
             curr_temp = serviceNum.parseMagnitude(temp['temp'])
-            weather_report = "Météo pour "+loc+". Il fait actuellement "+stat+". Il y a une chande de "  \
-                              +detstat+". La température actuelle est de "+curr_temp+" degré "  \
-                              +temp_unit+". "+humi+" pourcent d'humidité. Vitesse du vent "  \
-                              +wind_speed+". avec "+clou+" pourcent de nuage."
+            weather_report = (u"Météo pour " + loc + u". Il fait actuellement " + stat + u". Il y a une chande de "  \
+                              + detstat + u". La température actuelle est de " + curr_temp + u" degré "  \
+                              + temp_unit + u". " + humi + u" pourcent d'humidité. Vitesse du vent "  \
+                              + wind_speed + u". avec " + clou + u" pourcent de nuage.")
         
         elif report == 'tommorow':
             temp = weather.get_temperature(temp_unit)
             temp_morn = serviceNum.parseMagnitude(temp['morn'])
             temp_day = serviceNum.parseMagnitude(temp['day'])
             temp_night = serviceNum.parseMagnitude(temp['night'])
-            weather_report = "Météo pour "+loc+". Demain il fera "+stat+". Il y aura une chance de "  \
-                              +detstat+". La température durant la matinée sera de "+temp_morn+" degré "  \
-                              +temp_unit+". La température durant la journée sera de "+temp_day+" degré "  \
-                              +temp_unit+". et la Température dans la soirée sera de "+temp_night+" degré "  \
-                              +temp_unit+". "+humi+" Pourcent d'humidité. Vitesse du vent "  \
-                              +wind_speed+". avec "+clou+" pourcent de nuage."
+            weather_report = (u"Météo pour " + loc + u". Demain il fera " + stat + u". Il y aura une chance de "  \
+                              + detstat + u". La température durant la matinée sera de " + temp_morn + u" degré "  \
+                              + temp_unit + u". La température durant la journée sera de " + temp_day + u" degré "  \
+                              + temp_unit + u". et la Température dans la soirée sera de " + temp_night + u" degré "  \
+                              + temp_unit + u". " + humi + u" Pourcent d'humidité. Vitesse du vent "  \
+                              + wind_speed + u". avec " + clou + u" pourcent de nuage.")
         
         return weather_report
         
