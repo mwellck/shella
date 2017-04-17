@@ -64,27 +64,6 @@ def run():
     else:
         profile['carrier'] = carrier
 
-    # Location
-    def verifyLocation(place):
-        feed = feedparser.parse('http://rss.wunderground.com/auto/rss_full/' +
-                                place)
-        numEntries = len(feed['entries'])
-        if numEntries == 0:
-            return False
-        else:
-            print("Location saved as " + feed['feed']['description'][33:])
-            return True
-
-    print("\nLocation should be a 5-digit US zipcode (e.g., 08544). If you " +
-          "are outside the US, insert the name of your nearest big " +
-          "town/city.  For weather requests.")
-    location = raw_input("Location: ")
-    while location and not verifyLocation(location):
-        print("Weather not found. Please try another location.")
-        location = raw_input("Location: ")
-    if location:
-        profile['location'] = location
-
     # Timezone
     print("\nPlease enter a timezone from the list located in the TZ* " +
           "column at https://en.wikipedia.org/wiki/" +
@@ -112,6 +91,31 @@ def run():
     outputFile = open(shellapath.config("profile.yml"), "w")
     yaml.dump(profile, outputFile, default_flow_style=False)
     p_shella = open(shellapath.config("profile.yml"), "a")
+
+    # OpenWeatherMap
+    print("\nLocation configuration")
+    owm = raw_input("\nWould you like to add your location now? (Y) or (N): ")
+    while not own or (owm != 'Y' and owm != 'N'):
+        owm = raw_input("\nPlease choose yes (Y) or no (N): ")
+    if owm == "Y":
+      print("\nBefore you continue, please sign up on OpenWeatherMap and get your free API key")
+      api_key = raw_input("\nPlease enter your API key for OWM: ")
+      while not api_key:
+        api_key = raw_input("\nEnter your API key for OWM: ")
+      city_loc = raw_input("\nPlease enter your city: ")
+      while not city_loc:
+        city_loc = raw_input("\nEnter your city: ")
+      country_loc = raw_input("\nPlease enter your country name: ")
+      while not country_loc:
+        country_loc = raw_input("\nEnter your country name: ")
+      temp_pref = raw_input("\nPlease enter your temp unit (fahrenheit/celsius/kelvin): ")
+      while not temp_pref:
+        temp_pref = raw_input("\nEnter your temp unit (fahrenheit/celsius/kelvin): ")
+    p_shella.write('OpenWeatherMap:' + '\n' +
+              '   ''api_key: ' + api_key + '\n' +
+              '   ''city_name: ' + city_loc + '\n' +
+              '   ''country: ' + country_loc + '\n' +
+              '   ''temp_unit: ' + temp_pref + '\n')
 
     # STT Engines
     stt_engines = {
