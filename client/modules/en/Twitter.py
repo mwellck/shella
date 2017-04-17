@@ -8,7 +8,7 @@ import re
 from tweepy import OAuthHandler
 from tweepy import API
 from unidecode import unidecode
-from client import jasperpath
+from client import shellapath
 
 WORDS = ["TWITTER"]
 PRIORITY = 4

@@ -8,7 +8,7 @@ import re
 from tweepy import OAuthHandler
 from tweepy import API
 from unidecode import unidecode
-from client import jasperpath
+from client import shellapath
 
 WORDS = ["TWITTER"]
 PRIORITY = 4
@@ -48,7 +48,7 @@ def getNotifications(mic,latestRetweet,latestMention,latestDirectMessage, api):
                 mic.say(retweetFinal.text + " par " + retweetFinal.user.screen_name)
             latestRetweetsID.sort()
             latestRetweet = latestRetweetsID[-1]
-            retweetsIDFile = open(jasperpath.data('twitter', 'retweetsIDFile.txt'),'w')
+            retweetsIDFile = open(shellapath.data('twitter', 'retweetsIDFile.txt'),'w')
             retweetsIDFile.write(str(latestRetweet))
             retweetsIDFile.close()
         else:
@@ -62,7 +62,7 @@ def getNotifications(mic,latestRetweet,latestMention,latestDirectMessage, api):
 
             latestMentionsID.sort()
             latestMention = latestMentionsID[-1]
-            mentionIDFile = open(jasperpath.data('twitter', 'mentionIDFile.txt'),'w')
+            mentionIDFile = open(shellapath.data('twitter', 'mentionIDFile.txt'),'w')
             mentionIDFile.write(str(latestMention))
             mentionIDFile.close()
         else:
@@ -76,7 +76,7 @@ def getNotifications(mic,latestRetweet,latestMention,latestDirectMessage, api):
 
             latestDirectMessagesID.sort()
             latestDirectMessage = latestDirectMessagesID[-1]
-            directMessageIDFile = open(jasperpath.data('twitter', 'directMessageID.txt'),'w')
+            directMessageIDFile = open(shellapath.data('twitter', 'directMessageID.txt'),'w')
             directMessageIDFile.write(str(latestDirectMessage))
             directMessageIDFile.close()
         else:
@@ -154,7 +154,7 @@ def handle(text, mic, profile):
     latestDirectMessage = 0
 
     try:
-        directMessageIDFile = open(jasperpath.data('twitter', 'directMessageID.txt'),'r')
+        directMessageIDFile = open(shellapath.data('twitter', 'directMessageID.txt'),'r')
         directMessageID = directMessageIDFile.readline()
         latestDirectMessage = int(directMessageID)
         directMessageIDFile.close()
@@ -162,20 +162,20 @@ def handle(text, mic, profile):
         if len(directMessages) > 0:
             for directMessage in directMessages:
                 latestDirectMessage = directMessage.id
-            directMessageIDFile = open(jasperpath.data('twitter', 'directMessageID.txt'),'w')
+            directMessageIDFile = open(shellapath.data('twitter', 'directMessageID.txt'),'w')
             directMessageIDFile.write(str(latestDirectMessage))
             directMessageIDFile.close()
 
     mentions = api.mentions_timeline(count=1)
 
     try:
-        mentionIDFile = open(jasperpath.data('twitter', 'mentionIDFile.txt'),'r')
+        mentionIDFile = open(shellapath.data('twitter', 'mentionIDFile.txt'),'r')
         latestMentionID = mentionIDFile.readline()
         latestMention = int(latestMentionID)
         mentionIDFile.close()
     except IOError:
         if len(mentions) > 0:
-            mentionIDFile = open(jasperpath.data('twitter', 'mentionIDFile.txt'),'w')
+            mentionIDFile = open(shellapath.data('twitter', 'mentionIDFile.txt'),'w')
             for mention in mentions:
                 latestMention = mention.id
             mentionIDFile.write(str(latestMention))
@@ -184,13 +184,13 @@ def handle(text, mic, profile):
     retweets = api.retweets_of_me(count=1)
 
     try:
-        retweetsIDFile = open(jasperpath.data('twitter', 'retweetsIDFile.txt'),'r')
+        retweetsIDFile = open(shellapath.data('twitter', 'retweetsIDFile.txt'),'r')
         retweetsID = retweetsIDFile.readline()
         latestRetweet = int(retweetsID)
         retweetsIDFile.close()
     except IOError:
         if len(retweets) > 0:        
-            retweetsIDFile = open(jasperpath.data('twitter', 'retweetsIDFile.txt'),'w')
+            retweetsIDFile = open(shellapath.data('twitter', 'retweetsIDFile.txt'),'w')
             for retweet in retweets:
                 latestRetweet = retweet.id
             retweetsIDFile.write(str(latestRetweet))
