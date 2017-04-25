@@ -40,3 +40,6 @@ psutil
 # Twitter
 tweepy
 unidecode
+
+#Wolframalpha
+wolframalpha
