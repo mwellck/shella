@@ -5,7 +5,6 @@ over the terminal. Useful for debugging. Unlike with the typical Mic
 implementation, Shella is always active listening with local_mic.
 """
 
-
 class Mic:
     prev = None
 

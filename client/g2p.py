@@ -4,12 +4,9 @@ import re
 import subprocess
 import tempfile
 import logging
-
 import yaml
-
 import diagnose
 import shellapath
-
 
 class PhonetisaurusG2P(object):
     PATTERN = re.compile(r'^(?P<word>.+)\t(?P<precision>\d+\.\d+)\t<s> ' +
@@ -32,10 +29,6 @@ class PhonetisaurusG2P(object):
 
         cmd = [str(x) for x in cmd]
         try:
-            # FIXME: We can't just use subprocess.call and redirect stdout
-            # and stderr, because it looks like Phonetisaurus can't open
-            # an already opened file descriptor a second time. This is why
-            # we have to use this somehow hacky subprocess.Popen approach.
             proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE)
             stdoutdata, stderrdata = proc.communicate()
